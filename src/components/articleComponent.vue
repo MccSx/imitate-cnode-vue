@@ -10,10 +10,10 @@
     </div>
     <div class="message">
       <ul>
-        <li>发布与 {{articleData.create_at | timeFilter}}</li>
-        <!-- <li>作者 {{articleData.author.loginname}}</li> -->
-        <li>{{articleData.visit_count}} 次浏览</li>
-        <li>来自 {{tabName}}</li>
+        <li>&nbsp;• 发布与 {{articleData.create_at | timeFilter}}</li>
+        <li>&nbsp;• 作者 {{articleData.author.loginname}}</li>
+        <li>&nbsp;• {{articleData.visit_count}} 次浏览</li>
+        <li>&nbsp;• 来自 {{tabName}}</li>
       </ul>
     </div>
   </div>
@@ -69,4 +69,7 @@ export default {
   line-height: 1.5em; height: 1.5em; background: #ccc; color: white;}
 .header .tab.top{background: #80BD01;}
 .header h2{font-size: 20px; font-weight: bold;}
+.message{padding-bottom: 15px; border-bottom: 1px solid #838383;}
+.message ul{display: flex; flex-direction: row; margin-top: 20px;}
+.message ul li{font-size: 12px; color: #838383;}
 </style>
