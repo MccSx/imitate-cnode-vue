@@ -52,6 +52,7 @@ export default {
     }
   },
   beforeMount() {
+    this.isLoading = true
     this.getData()
   }
 }

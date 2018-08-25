@@ -1,4 +1,8 @@
 <template>
+<div>
+  <div class="loading" v-if="isLoading">
+    <img src="../assets/loading.gif" alt="">
+  </div>
   <div class="post-item">
     <div class="header">
       <div v-if="articleData.top === true" class="tab top">置顶</div>
@@ -11,12 +15,13 @@
     <div class="message">
       <ul>
         <li>&nbsp;• 发布与 {{articleData.create_at | timeFilter}}</li>
-        <li>&nbsp;• 作者 {{articleData.author.loginname}}</li>
+        <li>&nbsp;• 作者 {{authorName}}</li>
         <li>&nbsp;• {{articleData.visit_count}} 次浏览</li>
         <li>&nbsp;• 来自 {{tabName}}</li>
       </ul>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -24,8 +29,13 @@ export default {
   name : 'articleConponent',
   data() {
     return {
+      isLoading: true,
       articleData: {}
     }
+  },
+  beforeMount() {
+    this.isLoading = true
+    this.getArticleData()
   },
   components: {
 
@@ -39,6 +49,13 @@ export default {
       } else if (this.articleData.tab === 'job') {
         return '招聘'
       }
+    },
+    authorName() {
+      if (this.articleData.author) {
+        return this.articleData.author.loginname
+      } else {
+        return ''        
+      }
     }
   },
   methods: {
@@ -47,7 +64,8 @@ export default {
       .then( res => {
         if (res.data.success === true) {
           this.articleData = res.data.data
-          console.log(res.data.data)
+          this.isLoading = false
+          console.log(this.articleData)
           //console.log(this.articleData.author.loginname)
         }
       })
@@ -55,9 +73,6 @@ export default {
         console.log(err)
       })
     }
-  },
-  beforeMount() {
-    this.getArticleData()
   }
 }
 </script>
