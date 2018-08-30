@@ -5,7 +5,7 @@
     </div>
     <div class="post-list">
       <ul>
-        <li class="top-tab"><span class="active">全部</span><span>精华</span><span>分享</span><span>问答</span><span>招聘</span><span>客户端测试</span></li>
+        <li class="tab"><span class="active">全部</span><span>精华</span><span>分享</span><span>问答</span><span>招聘</span><span>客户端测试</span></li>
         <li v-for="post in posts" :key="post.id">
           <img :src="post.author.avatar_url" alt="">
           <span class="count">
@@ -61,9 +61,9 @@ export default {
 
 <style scoped>
 .posts{width: 84%; margin: 0 auto; background: #FFFFFF;}
-.top-tab{padding-left: 20px;}
-.top-tab>span{color: #80BD01; font-size: 14px; margin-right: 26px; cursor: pointer;}
-.top-tab>span.active{background: #80BD01; color: white; padding: 2px 4px; border-radius: 4px;}
+.tab{padding-left: 20px;}
+.tab>span{margin-right: 26px; font-size: 14px; color: #80BD01;}
+.tab>span.active{color: white; background: #80BD01; padding: 2px 4px; border-radius: 4px;}
 .post-list ul li{height: 50px; border-bottom: 1px solid #F0F0F0; display: flex; flex-direction: row; align-items: center;}
 .post-list ul li img{height: 65%; border-radius: 3px; margin-left: 1%;}
 .post-list ul li .count{display: flex; justify-content: center; align-items: center; width: 8%;}
